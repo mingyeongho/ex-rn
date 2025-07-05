@@ -1,7 +1,15 @@
+import CardButton from "@/components/CardButton";
 import { images, offers } from "@/constants";
 import cn from "clsx";
 import { Fragment } from "react";
-import { FlatList, Image, Pressable, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
@@ -58,6 +66,25 @@ export default function Index() {
         }}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="pb-28 px-5"
+        ListHeaderComponent={() => {
+          return (
+            <View className="flex-between flex-row my-5">
+              <View className="flex-start">
+                <Text className="font-semibold text-primary">DELIVER TO</Text>
+                <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
+                  <Text className="paragraph-bold text-dark-100">Ilsan</Text>
+                  <Image
+                    source={images.arrowDown}
+                    className="size-3"
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <CardButton />
+            </View>
+          );
+        }}
       />
     </SafeAreaView>
   );
