@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import { signIn } from "@/lib/appwrite";
+import * as Sentry from "@sentry/react-native";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Text, View } from "react-native";
@@ -25,6 +26,7 @@ export default function SignIn() {
       router.replace("/");
     } catch (e: any) {
       Alert.alert("Error", e.message);
+      Sentry.captureException(e);
     } finally {
       setIsSubmitting(false);
     }
