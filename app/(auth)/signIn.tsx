@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
+import { signIn } from "@/lib/appwrite";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Text, View } from "react-native";
@@ -19,8 +20,8 @@ export default function SignIn() {
         Alert.alert("Error", "Please enter valid email address and password.");
         return;
       }
+      await signIn({ email, password });
 
-      Alert.alert("Success", "You have successfully signed in.");
       router.replace("/");
     } catch (e: any) {
       Alert.alert("Error", e.message);
@@ -55,10 +56,10 @@ export default function SignIn() {
       />
 
       <View className="flex flex-row justify-center mt-5 gap-2">
-        <Text className="base-regular text-gray-100">
+        <Text className="base-regular text-gray-100 pr-0.5">
           Don&apos;t have an account?
         </Text>
-        <Link className="base-bold text-primary" href="/signUp">
+        <Link className="base-bold text-primary pr-0.5" href="/signUp">
           Sign Up
         </Link>
       </View>
