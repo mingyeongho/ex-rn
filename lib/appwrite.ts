@@ -5,6 +5,7 @@ import {
   Databases,
   ID,
   Query,
+  Storage,
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -12,8 +13,17 @@ export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT as string,
   platform: process.env.EXPO_PUBLIC_APPWRITE_PLATFORM as string,
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID as string,
+  bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID as string,
   userCollectionId: process.env
     .EXPO_PUBLIC_APPWRITE_USER_COLLECTION_ID as string,
+  categoriesCollectionId: process.env
+    .EXPO_PUBLIC_APPWRITE_CATEGORIES_COLLECTION_ID as string,
+  menuCollectionId: process.env
+    .EXPO_PUBLIC_APPWRITE_MENU_COLLECTION_ID as string,
+  customizationsCollectionId: process.env
+    .EXPO_PUBLIC_APPWRITE_CUSTOMIZATIONS_COLLECTION_ID as string,
+  menuCustomizationsCollectionId: process.env
+    .EXPO_PUBLIC_APPWRITE_MENU_CUSTOMIZATIONS_COLLECTION_ID as string,
 };
 
 export const client = new Client();
@@ -25,6 +35,7 @@ client
 
 export const account = new Account(client);
 export const database = new Databases(client);
+export const storage = new Storage(client);
 const avatars = new Avatars(client);
 
 export const createUser = async ({
